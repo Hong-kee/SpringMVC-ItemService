@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.PostConstruct;
@@ -27,6 +29,26 @@ public class BasicItemController {
         model.addAttribute("items", items);
         return "basic/items";
     }
+
+    @GetMapping("/{itemId}")
+    public String item(@PathVariable long itemId, Model model) {
+        Item item = itemRepository.findById(itemId);
+        model.addAttribute("item", item);
+        return "basic/item";
+    }
+
+    //상품 등록 폼을 볼 수 있는 메서드
+    @GetMapping("/add")
+    public String addForm() {
+        return "basic/addForm";
+    }
+
+    //상품 등록을 하는 메서드
+    @PostMapping("/add")
+    public String save() {
+        return "basic/addForm";
+    }
+
 
     /**
      * 테스트용 데이터 추가
