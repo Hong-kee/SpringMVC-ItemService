@@ -44,4 +44,13 @@ public class ItemRepository {
     public void clearStore() {
         store.clear();
     }
+
+    //삭제
+    public void delete(Long itemId) {
+        Item deleteItem = findById(itemId);
+        deleteItem.setId(null);
+        deleteItem.setItemName(null);
+        deleteItem.setPrice(null);
+        deleteItem.setQuantity(null);
+    }
 }
