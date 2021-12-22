@@ -34,10 +34,10 @@
 
             <tbody>
             <tr th:each="item : ${items}">
-                <td><a href="item.html" th:href="@{/basic/items/{itemId}(itemId=${item.id})}" th:text="${item.id}">회원id</a></td>
-                <td><a href="item.html" th:href="@{|/basic/items/${item.id}|}" th:text="${item.itemName}">테스트 상품1</a></td>
-                <td th:text="${item.price}">10000</td>
-                <td th:text="${item.quantity}">10</td>
+                <td th:if="${item.id != null}"><a href="item.html" th:href="@{/basic/items/{itemId}(itemId=${item.id})}" th:text="${item.id}">회원id</a></td>
+                <td th:if="${item.itemName != null}"><a href="item.html" th:href="@{|/basic/items/${item.id}|}" th:text="${item.itemName}">테스트 상품1</a></td>
+                <td th:if="${item.price != null}" th:text="${item.price}">10000</td>
+                <td th:if="${item.quantity != null}" th:text="${item.quantity}">10</td>
             </tr>
             </tbody>
         </table>
